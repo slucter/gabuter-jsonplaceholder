@@ -1,15 +1,15 @@
 <template>
   <div class="wrap-auth">
-    <form class="card-login">
+    <form @submit.prevent="loginEuy" class="card-login">
       <h3 class="textLogo">Gabuter Social</h3>
       <div class="input-form">
         <div class="logo-icon">
           <i class="fas fa-at"></i>
         </div>
-        <input type="email" placeholder="Enter your email">
+        <input type="email" v-model="email" placeholder="Enter your email">
       </div>
       <div class="input-form">
-        <button>Login</button>
+        <button type="submit">Login</button>
       </div>
     </form>
   </div>
@@ -17,7 +17,19 @@
 
 <script>
 export default {
-
+  name: 'Auth',
+  data () {
+    return {
+      email: ''
+    }
+  },
+  methods: {
+    loginEuy () {
+      if (this.email) {
+        this.$router.push('/landing')
+      }
+    }
+  }
 }
 </script>
 
